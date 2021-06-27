@@ -6,6 +6,7 @@
 </head>
 <body>
     <form:form action="addNewEmployee" method="post" modelAttribute="employee">
+        <form:hidden path="id"/>
         Name <form:input path="name"/>
         <br>
         Surname <form:input path="surname"/>

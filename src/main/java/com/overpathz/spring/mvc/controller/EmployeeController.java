@@ -7,17 +7,17 @@ import com.overpathz.spring.mvc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeService employeeService;
+    private final EmployeeService employeeService;
+
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @GetMapping
     public String showAllEmployees(Model model) {
@@ -34,6 +34,18 @@ public class EmployeeController {
     @PostMapping("/addNewEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee) {
         employeeService.saveEmployee(employee);
+        return "redirect:/employees";
+    }
+
+    @GetMapping("/updateEmployee")
+    public String updateUser(@RequestParam("empId") int id, Model model) {
+        model.addAttribute("employee", employeeService.getEmployee(id));
+        return "employee/employee-info";
+    }
+
+    @GetMapping("/deleteEmployee")
+    public String deleteEmployee(@RequestParam("empId") int id) {
+        employeeService.deleteEmployee(id);
         return "redirect:/employees";
     }
 }
