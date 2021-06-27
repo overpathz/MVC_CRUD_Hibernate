@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mvc_crud_hibernate" />
+        <module name="MVC_CRUD_Hibernate" />
       </profile>
     </annotationProcessing>
   </component>
