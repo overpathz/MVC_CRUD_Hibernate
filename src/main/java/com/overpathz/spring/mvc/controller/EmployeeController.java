@@ -21,4 +21,9 @@ public class MyController {
         model.addAttribute("employees", employeeService.getAllEmployees());
         return "employee/all-employees";
     }
+
+    @GetMapping("/addNewEmployee")
+    public String addNewEmployee() {
+        
+    }
 }
