@@ -1,7 +1,6 @@
 package com.overpathz.spring.mvc.service;
 
 import com.overpathz.spring.mvc.dao.EmployeeDAO;
-import com.overpathz.spring.mvc.dao.EmployeeDAOImpl;
 import com.overpathz.spring.mvc.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,12 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+    private final EmployeeDAO employeeDAO;
+
     @Autowired
-    private EmployeeDAO employeeDAO;
+    public EmployeeServiceImpl(EmployeeDAO employeeDAO) {
+        this.employeeDAO = employeeDAO;
+    }
 
     @Override
     @Transactional

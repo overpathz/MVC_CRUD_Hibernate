@@ -1,7 +1,5 @@
 package com.overpathz.spring.mvc.controller;
 
-import com.overpathz.spring.mvc.dao.EmployeeDAO;
-import com.overpathz.spring.mvc.dao.EmployeeDAOImpl;
 import com.overpathz.spring.mvc.entity.Employee;
 import com.overpathz.spring.mvc.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +13,7 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    @Autowired
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
